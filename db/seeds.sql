@@ -31,4 +31,3 @@ VALUES
     ('Alison', 'Mooney', 8),
     ('Carter', 'Brown', 9),
     ('Melanie', 'Clarke', 10);
-
