@@ -70,13 +70,13 @@ function addDepartment() {
         message: 'What is the department name?',
         }
     ])
-    .then(function () {
+    .then(function (ans) {
         const sql = `INSERT INTO department(name) VALUES (?)`;
-        db.query(sql, (err, results) => {
+        db.query(sql, (err) => {
             if (err) {
                 return err;
         }
-        console.table(results)
+        console.table(ans)
         });
     });
 }
