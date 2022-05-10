@@ -71,7 +71,7 @@ function addDepartment() {
         }
     ])
     .then(function (ans) {
-        const sql = `INSERT INTO department(name) VALUES (?)`;
+        const sql = `INSERT INTO department(name) VALUES (?);`;
         db.query(sql, (err) => {
             if (err) {
                 return err;
