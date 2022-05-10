@@ -158,25 +158,34 @@ function addEmployee() {
 }
 
 function updateEmployee() {
+    const userChoices = users.map((user) => {
+        firstName: user.first_name,
+        lastName: user.last_name,
+        value: user.role_id
+        });
     inquirer.prompt([
         {
             type: 'list', 
             name: 'updateEmployee',
             message: 'What employee would you like to update?',
-            choices: [`SELECT * FROM employee;`]
+            choices: userChoices
+        },
+        { 
+            type: 'input',
+            name: 'updateRole',
+            message: 'What role would you like to update?'
         }
     ])
-    // .then(function (ans) {
-    //     const sql = `INSERT INTO employee (first_name, last_name, role_id, manager_id)
-    //     VALUES (?,?,?,?)`;
-    //     db.query(sql, [ans.addFirstName, ans.addLastName, ans.addUsersRole, ans.addUsersManager], (err, res) => {
-    //         if (err) {
-    //             return err;
-    //     } else {
-    //         getEmployees();
-    //     }
-    //     });
-    // });
+    .then(function (ans) {
+        const sql = `UPDATE employee SET role_id = ? WHERE id = ?;`;
+        db.query(sql, [ans.updateEmployee], (err, res) => {
+            if (err) {
+                return err;
+        } else {
+            getEmployees();
+        }
+        });
+    });
 }
 
 questions();
