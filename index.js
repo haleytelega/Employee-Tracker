@@ -158,14 +158,12 @@ function addEmployee() {
 }
 
 function updateEmployee() {
-    const updateEmployees = {
-        
     inquirer.prompt([
         {
             type: 'list', 
             name: 'updateEmployee',
             message: 'What employee would you like to update?',
-            choices: `SELECT * FROM employee;`
+            choices: [`SELECT * FROM employee;`]
         }
     ])
     // .then(function (ans) {
