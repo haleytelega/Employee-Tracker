@@ -19,12 +19,37 @@ const questions = () => {
             case 'View all roles':
                 getRoles();
                 break;
+            case 'View all employees':
+                getEmployees();
+                break;
         }
     })
 };
 
 function getDepartments() {
     const sql = `SELECT * FROM department;`
+
+        db.query(sql, (err, results) => {
+            if (err) {
+                return err;
+        }
+        console.table(results)
+    });
+}
+
+function getRoles() {
+    const sql = `SELECT * FROM role;`
+
+        db.query(sql, (err, results) => {
+            if (err) {
+                return err;
+        }
+        console.table(results)
+    });
+}
+
+function getEmployees() {
+    const sql = `SELECT * FROM employee;`
 
         db.query(sql, (err, results) => {
             if (err) {
