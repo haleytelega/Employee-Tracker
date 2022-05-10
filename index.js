@@ -104,8 +104,8 @@ function addRole() {
         }
     ])
     .then(function (ans) {
-        const sql = `INSERT INTO role(title, salary, department_id) VALUES (?,?,?);`;
-        db.query(sql, ans.addTitle, ans.addSalary, ans.addDepartmentId, (err, res) => {
+        const sql = `INSERT INTO role (title, salary, department_id) VALUES (?,?,?);`;
+        db.query(sql, [ans.addTitle, ans.addSalary, ans.addDepartmentId], (err, res) => {
             if (err) {
                 return err;
         } else {
