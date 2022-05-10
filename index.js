@@ -28,6 +28,9 @@ const questions = () => {
             case 'Add a role':
                 addRole();
                 break;
+            case 'Add an employee':
+                addEmployee();
+                break;
         }
     })
 };
@@ -110,6 +113,42 @@ function addRole() {
                 return err;
         } else {
             getRoles();
+        }
+        });
+    });
+}
+
+function addEmployee() {
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'addFirstName',
+            message: 'What is the users first name?',
+        },
+        {
+            type: 'input',
+            name: 'addLastName',
+            message: 'What is the users last name?',
+        },
+        {
+            type: 'input',
+            name: 'addUsersRole',
+            message: 'What is the users role id?'
+        },
+        {
+            type: 'input',
+            name: 'addUsersManager',
+            message: 'What is the users manager?'
+        }
+    ])
+    .then(function (ans) {
+        const sql = `INSERT INTO employee (first_name, last_name, role_id, manager_id)
+        VALUES (?,?,?,?)`;
+        db.query(sql, [ans.addFirstName, ans.addLastName, ans.addUsersRole, ans.addUsersManager], (err, res) => {
+            if (err) {
+                return err;
+        } else {
+            getEmployees();
         }
         });
     });
