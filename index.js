@@ -158,11 +158,10 @@ function addEmployee() {
 }
 
 function updateEmployee() {
-    const userChoices = users.map((user) => {
-        firstName: user.first_name,
-        lastName: user.last_name,
-        value: user.role_id
-        });
+    const userChoices = users.map((user) => 
+        {firstName: user.first_name},
+        {lastName: user.last_name},
+        {value: user.role_id});
     inquirer.prompt([
         {
             type: 'list', 
@@ -177,7 +176,7 @@ function updateEmployee() {
         }
     ])
     .then(function (ans) {
-        const sql = `UPDATE employee SET role_id = ? WHERE id = ?;`;
+        const sql = `UPDATE employee SET ??;`;
         db.query(sql, [ans.updateEmployee], (err, res) => {
             if (err) {
                 return err;
