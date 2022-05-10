@@ -25,6 +25,9 @@ const questions = () => {
             case 'Add a department':
                 addDepartment();
                 break;
+            case 'Add a role':
+                addRole();
+                break;
         }
     })
 };
@@ -77,6 +80,36 @@ function addDepartment() {
                 return err;
         } else {
             getDepartments();
+        }
+        });
+    });
+}
+
+function addRole() {
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'addTitle',
+            message: 'What is the users job title?',
+        },
+        {
+            type: 'input',
+            name: 'addSalary',
+            message: 'What is the users salary?',
+        },
+        {
+            type: 'input',
+            name: 'addDepartmentId',
+            message: 'What is the department id?'
+        }
+    ])
+    .then(function (ans) {
+        const sql = `INSERT INTO role(title, salary, department_id) VALUES (?,?,?);`;
+        db.query(sql, ans.addTitle, ans.addSalary, ans.addDepartmentId, (err, res) => {
+            if (err) {
+                return err;
+        } else {
+            getRoles();
         }
         });
     });
