@@ -12,9 +12,12 @@ const questions = () => {
         }
     ])
     .then(function (ans) {
-        switch(ans) {
+        switch(ans.allQuestions) {
             case 'View all departments':
                 getDepartments();
+                break;
+            case 'View all roles':
+                getRoles();
                 break;
         }
     })
@@ -23,11 +26,11 @@ const questions = () => {
 function getDepartments() {
     const sql = `SELECT * FROM department;`
 
-        db.query(sql, (err) => {
+        db.query(sql, (err, results) => {
             if (err) {
                 return err;
         }
-        console.table(sql)
+        console.table(results)
     });
 }
 
