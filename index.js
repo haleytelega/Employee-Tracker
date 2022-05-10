@@ -31,6 +31,9 @@ const questions = () => {
             case 'Add an employee':
                 addEmployee();
                 break;
+            case 'Update an employee':
+                updateEmployee();
+                break;
         }
     })
 };
@@ -152,6 +155,30 @@ function addEmployee() {
         }
         });
     });
+}
+
+function updateEmployee() {
+    let choices = getEmployees();
+    console.log(choices);
+    inquirer.prompt([
+        {
+            type: 'list', 
+            name: 'updateEmployee',
+            message: 'What employee would you like to update?',
+            choices: [choices]
+        }
+    ])
+    // .then(function (ans) {
+    //     const sql = `INSERT INTO employee (first_name, last_name, role_id, manager_id)
+    //     VALUES (?,?,?,?)`;
+    //     db.query(sql, [ans.addFirstName, ans.addLastName, ans.addUsersRole, ans.addUsersManager], (err, res) => {
+    //         if (err) {
+    //             return err;
+    //     } else {
+    //         getEmployees();
+    //     }
+    //     });
+    // });
 }
 
 questions();
