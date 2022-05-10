@@ -72,11 +72,12 @@ function addDepartment() {
     ])
     .then(function (ans) {
         const sql = `INSERT INTO department(name) VALUES (?);`;
-        db.query(sql, (err) => {
+        db.query(sql, ans.addDepartment, (err, res) => {
             if (err) {
                 return err;
+        } else {
+            getDepartments();
         }
-        console.table(ans)
         });
     });
 }
