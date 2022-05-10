@@ -70,17 +70,15 @@ function addDepartment() {
         message: 'What is the department name?',
         }
     ])
-    // .then(function (ans) {
-    //     const sql = `INSERT INTO department(name) VALUES (?)`;
-    //     const params = [body.department];
-
-    //     db.query(sql, params (err, results) => {
-    //         if (err) {
-    //             return err;
-    //         }
-
-    //     }
-    // });
+    .then(function () {
+        const sql = `INSERT INTO department(name) VALUES (?)`;
+        db.query(sql, (err, results) => {
+            if (err) {
+                return err;
+        }
+        console.table(results)
+        });
+    });
 }
 
 questions();
