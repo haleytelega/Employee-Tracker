@@ -22,6 +22,9 @@ const questions = () => {
             case 'View all employees':
                 getEmployees();
                 break;
+            case 'Add a department':
+                addDepartment();
+                break;
         }
     })
 };
@@ -57,6 +60,27 @@ function getEmployees() {
         }
         console.table(results)
     });
+}
+
+function addDepartment() {
+    inquirer.prompt([
+        {
+        type: 'input',
+        name: 'addDepartment',
+        message: 'What is the department name?',
+        }
+    ])
+    // .then(function (ans) {
+    //     const sql = `INSERT INTO department(name) VALUES (?)`;
+    //     const params = [body.department];
+
+    //     db.query(sql, params (err, results) => {
+    //         if (err) {
+    //             return err;
+    //         }
+
+    //     }
+    // });
 }
 
 questions();
