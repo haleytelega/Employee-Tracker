@@ -158,10 +158,15 @@ function addEmployee() {
 }
 
 function updateEmployee() {
-    const userChoices = users.map((user) => 
-        {firstName: user.first_name},
-        {lastName: user.last_name},
-        {value: user.role_id});
+    db.getEmployees().then((employees) => {
+        console.log(employees)
+    })
+    const userChoices = users.map((user) => {
+        console.log(user)
+        // firstName: 'user.first_name',
+        // lastName: 'user.last_name',
+        // value: 'user.role_id'
+    });
     inquirer.prompt([
         {
             type: 'list', 
