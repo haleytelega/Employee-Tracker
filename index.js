@@ -155,21 +155,23 @@ function addEmployee() {
         }
         });
     });
-}
+}   
 
 function updateEmployee() {
-    const userChoices = users.map((user) => {
-        console.log(user)
-        firstName: 'user.first_name',
-        lastName: 'user.last_name',
-        value: 'user.role_id'
-    });
+    db.query(`SELECT * FROM employee`, (err, res) => {
+        if (err) {console.log("An error occurred")};
+    // console.log(res)   
+    const pickEmployee = res.map((employee) => ({name: employee.first_name + " " + employee.last_name, value: employee.id}))
+    // console.log(pickEmployee)
+    // db.query(`SELECT * FROM role`, (err,res) =>{
+    //     if (err) {console.log("An error occurred")};
+    // const pickRole = res.map((roles) => ({name: roles.title, value: roles.id}))
     inquirer.prompt([
         {
             type: 'list', 
             name: 'updateEmployee',
             message: 'What employee would you like to update?',
-            choices: userChoices
+            choices: pickEmployee
         },
         { 
             type: 'input',
@@ -187,6 +189,7 @@ function updateEmployee() {
         }
         });
     });
+})
 }
 
 questions();
