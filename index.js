@@ -180,12 +180,12 @@ function updateEmployee() {
         { 
             type: 'input',
             name: 'updateRole',
-            message: 'What role would you like to update?'
+            message: 'What role would you like to update to?'
         },
         { 
             type: 'input',
             name: 'updateOldRole',
-            message: 'What was the old role?'
+            message: 'What was is the employees id?'
         }
 
     ])
