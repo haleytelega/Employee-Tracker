@@ -164,11 +164,11 @@ function updateEmployee() {
         
         const pickEmployee = res.map((employee) => ({name: employee.first_name + " " + employee.last_name, value: employee.id}))
 
-    db.query(`SELECT * FROM role`, (err,res) =>{
-        if (err) 
-        {console.log("An error occurred")};
+    // db.query(`SELECT * FROM role`, (err,res) =>{
+    //     if (err) 
+    //     {console.log("An error occurred")};
 
-    const pickRole = res.map((roles) => ({name: roles.title, value: roles.id}))
+    // const pickRole = res.map((roles) => ({name: roles.title, value: roles.id}))
 
     inquirer.prompt([
         {
@@ -181,11 +181,17 @@ function updateEmployee() {
             type: 'input',
             name: 'updateRole',
             message: 'What role would you like to update?'
+        },
+        { 
+            type: 'input',
+            name: 'updateOldRole',
+            message: 'What was the old role?'
         }
+
     ])
     .then(function (ans) {
         const sql = `UPDATE employee SET role_id = ? WHERE id = ?;`;
-        db.query(sql, [ans.updateEmployee], (err, res) => {
+        db.query(sql, [ans.updateRole, ans.updateOldRole], (err, res) => {
             if (err) {
                 return err;
         } else {
@@ -194,7 +200,6 @@ function updateEmployee() {
         });
     });
     });
-});
 }
 
 questions();
