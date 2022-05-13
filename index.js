@@ -159,13 +159,17 @@ function addEmployee() {
 
 function updateEmployee() {
     db.query(`SELECT * FROM employee`, (err, res) => {
-        if (err) {console.log("An error occurred")};
-    // console.log(res)   
-    const pickEmployee = res.map((employee) => ({name: employee.first_name + " " + employee.last_name, value: employee.id}))
-    // console.log(pickEmployee)
-    // db.query(`SELECT * FROM role`, (err,res) =>{
-    //     if (err) {console.log("An error occurred")};
-    // const pickRole = res.map((roles) => ({name: roles.title, value: roles.id}))
+        if (err) 
+        {console.log("An error occurred")};
+        
+        const pickEmployee = res.map((employee) => ({name: employee.first_name + " " + employee.last_name, value: employee.id}))
+
+    db.query(`SELECT * FROM role`, (err,res) =>{
+        if (err) 
+        {console.log("An error occurred")};
+
+    const pickRole = res.map((roles) => ({name: roles.title, value: roles.id}))
+
     inquirer.prompt([
         {
             type: 'list', 
@@ -180,7 +184,7 @@ function updateEmployee() {
         }
     ])
     .then(function (ans) {
-        const sql = `UPDATE employee SET ??;`;
+        const sql = `UPDATE employee SET role_id = ? WHERE id = ?;`;
         db.query(sql, [ans.updateEmployee], (err, res) => {
             if (err) {
                 return err;
@@ -189,7 +193,8 @@ function updateEmployee() {
         }
         });
     });
-})
+    });
+});
 }
 
 questions();
