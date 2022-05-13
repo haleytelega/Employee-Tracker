@@ -31,7 +31,7 @@ const questions = () => {
             case 'Add an employee':
                 addEmployee();
                 break;
-            case 'Update an employee':
+            case 'Update an employee role':
                 updateEmployee();
                 break;
         }
@@ -158,14 +158,11 @@ function addEmployee() {
 }
 
 function updateEmployee() {
-    db.getEmployees().then((employees) => {
-        console.log(employees)
-    })
     const userChoices = users.map((user) => {
         console.log(user)
-        // firstName: 'user.first_name',
-        // lastName: 'user.last_name',
-        // value: 'user.role_id'
+        firstName: 'user.first_name',
+        lastName: 'user.last_name',
+        value: 'user.role_id'
     });
     inquirer.prompt([
         {

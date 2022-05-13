@@ -19,15 +19,10 @@ VALUES
     ('Finance Analyst', 100000, 6),
     ('I.T. Manager', 150000, 2);
 
-INSERT INTO employee (first_name, last_name, role_id, manager_id)
+INSERT INTO
+    employee(first_name, last_name, role_id, manager_id)
 VALUES
-    ('Willow', 'Guerra', 1, ),
-    ('Eliana', 'Montgomery', 2, 1),
-    ('London', 'Vazquez', 3, 2),
-    ('Sterling', 'Hayden', 4, 6),
-    ('Finley', 'Norton', 5, 4),
-    ('Julius', 'Woods', 6, 1),
-    ('Katherine', 'Pearce', 7, 5),
-    ('Alison', 'Mooney', 8, 3),
-    ('Carter', 'Brown', 9, 2),
-    ('Melanie', 'Clarke', 10, 4);
+    ("Haley", "Telega", 1, null),
+    ("Jordan", "Campbell", 2, null),
+    ("Alsion", "Brown", 1, 1),
+    ("Holly", "Summers", 2, 1);
