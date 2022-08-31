@@ -16,7 +16,7 @@
 - [License](#license)
 
   ## Installation
-  What are the steps required to install your project? You will need Node, MySQL and Inquirer Package and run node index in the terminal.
+  What are the steps required to install your project? You will need Node, MySQL and Inquirer Package and node index in the terminal.
 
   ## Usage
   Provide instructions and examples for use: To view, create and update employees, departments and roles.
